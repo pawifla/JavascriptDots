@@ -1,4 +1,4 @@
-  const circle = document.getElementById("circle");
+  const gameContainer = document.querySelector(".game-container");
   let score = 0;
   
   function getRandomColor() {
@@ -10,37 +10,48 @@
     return color;
   }
   
-  function changeCircleColor() {
+  function changeCircleColor(circle) {
     circle.style.backgroundColor = getRandomColor();
   }
   
-  function increaseScore() {
-    score++;
-    circle.textContent = `Score: ${score}`;
-  }
 
-    function moveCircleRandomly() {
-    const maxX = (window.innerWidth - circle.clientWidth)/2;
-    const maxY = (window.innerHeight - circle.clientHeight)/2;
+    function moveCircleRandomly(circle) {
+        const maxX = (window.innerWidth - circle.clientWidth) / 2;
+        const maxY = (window.innerHeight - circle.clientHeight) / 2;
 
-    const randomX = (Math.floor(Math.random() * 10) % 2 == 0)? Math.floor(Math.random() * maxX): Math.floor(Math.random()* maxX *-1);
-    const randomY = (Math.floor(Math.random()* 10) % 2 == 0)? Math.floor(Math.random() * maxY): Math.floor(Math.random()* maxY *-1);
+        const randomX = (Math.floor(Math.random() * 10) % 2 == 0) ? Math.floor(Math.random() * maxX) : Math.floor(Math.random() * maxX * -1);
+        const randomY = (Math.floor(Math.random() * 10) % 2 == 0) ? Math.floor(Math.random() * maxY) : Math.floor(Math.random() * maxY * -1);
 
-
-    circle.style.left = `${randomX}px`;
-    circle.style.top = `${randomY}px`;
-    console.log(randomX, randomY);
+        circle.style.left = `${randomX}px`;
+        circle.style.top = `${randomY}px`;
     } 
-  function startGame() {
-    circle.addEventListener("click", () => {
-      increaseScore();
-      changeCircleColor();
-      moveCircleRandomly();
-    });
-  
-    // Initial circle color change
-    changeCircleColor();
-  }
+
+    function createCircle() {
+        const circle = document.createElement("div");
+        circle.classList.add("circle");
+        circle.style.backgroundColor = getRandomColor();
+      
+        circle.addEventListener("click", () => {
+          moveCircleRandomly(circle);
+          createCircle();
+        });
+      
+        gameContainer.appendChild(circle);
+      
+        return circle;
+      }
+
+      function startGame() {
+        const scoreElement = document.createElement("div");
+        scoreElement.id = "score";
+        scoreElement.textContent = "Score: 0";
+        gameContainer.appendChild(scoreElement);
+      
+        let circles = [];
+      
+        const circle = createCircle();
+        circles.push(circle);
+      }
   
   startGame();
   
