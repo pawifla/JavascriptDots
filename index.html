@@ -1,14 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Color Click Game</title>
-<link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JavaClicks</title>
+  <!-- Bootstrap CSS Link -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
-<div class="game-container">
-</div>
-<script src="script.js"></script>
+  <div class="container mt-5">
+    <h1>Welcome to JavaClicks!</h1>
+    <p>Choose a game to play:</p>
+    <div class="row">
+      <div class="col-md-4 mb-4">
+        <button class="btn btn-primary btn-block" onclick="location.href='dots.html'">Dots</button>
+      </div>
+      <div class="col-md-4 mb-4">
+        <button class="btn btn-success btn-block" onclick="location.href='clickSurvival.html'">Click Survival</button>
+      </div>
+      <div class="col-md-4 mb-4">
+        <button class="btn btn-danger btn-block" onclick="location.href='game3.html'">Game 3</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap JS Scripts (jQuery and Popper.js are required for Bootstrap functionality) -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
