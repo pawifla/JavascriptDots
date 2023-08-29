@@ -31,6 +31,10 @@ body {
     width: 3px;
   } 
 
+  .game-over-screen{
+    background-color: red;
+  }
+
  #container {
       position: relative;
       width: 400px;

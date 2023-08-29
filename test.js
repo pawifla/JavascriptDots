@@ -11,7 +11,7 @@ const corners = [
 let livesRemaining = 3;
 let currentCorner = 0;
 let animationInProgress = false;
-const score = 0;
+let score = 0;
 
 
 let direction = '';
@@ -125,14 +125,28 @@ function pickDirections(startPos) {
 function loseLife(){
     const healthContainer = document.getElementById('health');
     let nextLife = healthContainer.getElementsByClassName('bi')[0];
-    console.log(typeof(nextLife));
-    if(typeof(nextLife) != 'object'){
+    console.log(healthContainer.getElementsByClassName('bi').length);
+    if(healthContainer.getElementsByClassName('bi').length == 1){
         console.log('game over');
-        console.log(seconds);
-        score = seconds;
+        console.log(score);
+        healthContainer.removeChild(nextLife);
+        // game over screen
+        gameOver(score);
         return;
     }
     healthContainer.removeChild(nextLife);
+}
+
+function gameOver(finalScore){
+    //remove ball
+    container.removeChild(circle);
+
+    //display game over screen
+    const gameOverElem = document.createElement('div');
+    gameOverElem.innerHTML += 'Game Over: '+ finalScore;
+    gameOverElem.style = "height: inherit; font-size: xx-large;  width: inherit; display: flex; justify-content: center; align-items: center;"; container.setAttribute('class', 'game-over-screen');
+    container.appendChild(gameOverElem);
+    clearInterval(countdown);
 }
 
 function createLives(numOfLives){
@@ -162,6 +176,7 @@ function startTimer(stop) {
   // Start the timer interval
   countdown = setInterval(function() {
     seconds++; // Decrement the time
+    score = seconds;
     timerElement.textContent = seconds; // Update the displayed time
 
   }, 1000); // Run the interval every 1000ms (1 second)
