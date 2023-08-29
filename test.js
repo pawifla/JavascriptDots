@@ -11,6 +11,7 @@ const corners = [
 let livesRemaining = 3;
 let currentCorner = 0;
 let animationInProgress = false;
+const score = 0;
 
 
 let direction = '';
@@ -65,7 +66,6 @@ function animateCircle() {
                 default:
             }
         }
-        //4 corners
         //directions
         function moveCircleDown(position) {
             circle.style.top = (startPos.y + position) + "px";
@@ -124,8 +124,15 @@ function pickDirections(startPos) {
 
 function loseLife(){
     const healthContainer = document.getElementById('health');
-    console.log(healthContainer.getElementsByClassName('bi'));
-    healthContainer.removeChild(healthContainer.getElementsByClassName('bi')[0]);
+    let nextLife = healthContainer.getElementsByClassName('bi')[0];
+    console.log(typeof(nextLife));
+    if(typeof(nextLife) != 'object'){
+        console.log('game over');
+        console.log(seconds);
+        score = seconds;
+        return;
+    }
+    healthContainer.removeChild(nextLife);
 }
 
 function createLives(numOfLives){
@@ -145,6 +152,22 @@ for(numOfLives = 3; numOfLives > 0; numOfLives--){
 }
 
 //Start Timer
+function startTimer(stop) {
+  let seconds = 0; // Set the initial time in seconds
+  const timerElement = document.getElementById('timer');
+
+  // Display the initial time
+  timerElement.textContent = seconds;
+
+  // Start the timer interval
+  countdown = setInterval(function() {
+    seconds++; // Decrement the time
+    timerElement.textContent = seconds; // Update the displayed time
+
+  }, 1000); // Run the interval every 1000ms (1 second)
+}
+
+startTimer();
 
 // Move to the next corner on click
 container.addEventListener('click', loseLife);
