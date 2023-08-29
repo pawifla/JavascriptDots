@@ -1,6 +1,6 @@
   const gameContainer = document.querySelector(".game-container");
   let score = 0;
-  
+  // TODO: make drawing feature: click and circles created under mouse
   function getRandomColor() {
     const letters = "0123456789ABCDEF";
     let color = "#";
@@ -40,6 +40,26 @@
       
         return circle;
       }
+
+      function fillScreenWithDots (count){
+        let maxDots = 100;
+        let counter = count ? count : 0;
+        // TODO: add condition not to run if filling
+        // add inputs for speed/dot amount
+        if(counter < maxDots){
+          setTimeout(function(){
+          let circle = createCircle();
+          circle.classList.add("circle");
+          circle.style.backgroundColor = getRandomColor();
+          moveCircleRandomly(circle);
+          createCircle();
+            counter++;
+            console.log(counter);
+            fillScreenWithDots(counter);
+          }, 10);
+        } 
+      }
+
 
       function startGame() {
         const scoreElement = document.createElement("div");
