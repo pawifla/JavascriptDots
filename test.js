@@ -29,6 +29,7 @@ function animateCircle() {
     function frame() {
         if (pos == 350) {
             clearInterval(id);
+            animateCircle();
         } else {
             switch (direction) {
                 case 'down':
@@ -184,6 +185,12 @@ function startTimer(stop) {
 
 startTimer();
 
+function stayinAlive(e){
+    //when player successfully clicks circle
+}
+animateCircle();
 
 // Move to the next corner on click
 container.addEventListener('click', loseLife);
+
+circle.addEventListener('click', stayinAlive);
