@@ -183,14 +183,36 @@ function startTimer(stop) {
   }, 1000); // Run the interval every 1000ms (1 second)
 }
 
-startTimer();
 
 function stayinAlive(e){
-    //when player successfully clicks circle
+    //when player successfully clicks circle... maybe add a life
 }
+
+function activateCircle(){
+    //change color - add click event for one second
+    circle.style.backgroundColor = 'red';
+    circle.addEventListener('click', stayinAlive);
+    setTimeout(function(){
+    circle.style.backgroundColor = 'blue';
+    circle.removeEventListener('click', stayinAlive);
+    }, 1000);
+}
+
+//random interval clickable circle
+(function loop() {
+    var rand = Math.round(Math.random() * (30000 - 500)) + 500;
+    interval = setInterval(function() {
+            activateCircle();
+            loop();  
+    }, rand);
+}());
+
+
+//start game functions
 animateCircle();
+activateCircle();
+startTimer();
 
 // Move to the next corner on click
-container.addEventListener('click', loseLife);
+container.addEventListener('click', activateCircle);
 
-circle.addEventListener('click', stayinAlive);
