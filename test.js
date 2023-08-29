@@ -169,5 +169,6 @@ function startTimer(stop) {
 
 startTimer();
 
+
 // Move to the next corner on click
 container.addEventListener('click', loseLife);
