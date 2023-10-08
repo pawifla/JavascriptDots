@@ -1,6 +1,6 @@
 # JavascriptDots
 Javascript mini 'games'
 
-Random Dot Generator
-Click Survival
+- Random Dot Generator
+- Click Survival
 
