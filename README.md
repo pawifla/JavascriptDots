@@ -1,6 +1,10 @@
 # JavascriptDots
 Javascript mini 'games'
-
-- Random Dot Generator
+## Todo
+- Dynamic MenU
+## In Progress
 - Click Survival
+
+## Finished
+- Random Dot Generator
 
