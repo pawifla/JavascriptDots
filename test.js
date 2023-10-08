@@ -67,7 +67,7 @@ function animateCircle() {
                 default:
             }
         }
-        //directions
+        // #region directions
         function moveCircleDown(position) {
             circle.style.top = (startPos.y + position) + "px";
         }
@@ -96,6 +96,7 @@ function animateCircle() {
         function moveCircleRight(position) {
             circle.style.left = position + "px";
         }
+        // #endregion
     }
 }
 
@@ -124,18 +125,17 @@ function pickDirections(startPos) {
 }
 
 function loseLife(){
+    //remove lives, game over when 0 lives.
     const healthContainer = document.getElementById('health');
     let nextLife = healthContainer.getElementsByClassName('bi')[0];
-    console.log(healthContainer.getElementsByClassName('bi').length);
     if(healthContainer.getElementsByClassName('bi').length == 1){
-        console.log('game over');
-        console.log(score);
         healthContainer.removeChild(nextLife);
-        // game over screen
         gameOver(score);
         return;
     }
-    healthContainer.removeChild(nextLife);
+    else if(healthContainer.getElementsByClassName('bi').length > 0){
+        healthContainer.removeChild(nextLife);
+    }
 }
 
 function gameOver(finalScore){
@@ -144,7 +144,8 @@ function gameOver(finalScore){
 
     //display game over screen
     const gameOverElem = document.createElement('div');
-    gameOverElem.innerHTML += 'Game Over: '+ finalScore;
+    gameOverElem.innerHTML += "Game Over <br>";
+    gameOverElem.innerHTML +=  'Final Score: '+ finalScore;
     gameOverElem.style = "height: inherit; font-size: xx-large;  width: inherit; display: flex; justify-content: center; align-items: center;"; container.setAttribute('class', 'game-over-screen');
     container.appendChild(gameOverElem);
     clearInterval(countdown);
@@ -186,6 +187,7 @@ function startTimer(stop) {
 
 function stayinAlive(e){
     //when player successfully clicks circle... maybe add a life
+    console.log('stayin alive');
 }
 
 function activateCircle(){
