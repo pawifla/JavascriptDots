@@ -1,6 +1,7 @@
 const circle = document.getElementById('circle');
 const container = document.getElementById('container');
 const health = document.getElementById('health');
+const healthContainer = document.getElementById('health');
 const corners = [
     { top: 0, left: 0 },
     { top: 0, right: 0 },
@@ -24,8 +25,7 @@ function animateCircle() {
     // pick random direction based on start positions
     direction = pickDirections(startPos);
 
-    clearInterval(id);
-    id = setInterval(frame, 1);
+    id = setInterval(frame, 10);
     function frame() {
         if (pos == 350) {
             clearInterval(id);
@@ -126,7 +126,6 @@ function pickDirections(startPos) {
 
 function loseLife(){
     //remove lives, game over when 0 lives.
-    const healthContainer = document.getElementById('health');
     let nextLife = healthContainer.getElementsByClassName('bi')[0];
     if(healthContainer.getElementsByClassName('bi').length == 1){
         healthContainer.removeChild(nextLife);
@@ -139,6 +138,7 @@ function loseLife(){
 }
 
 function gameOver(finalScore){
+    // Todo: fix style 
     //remove ball
     container.removeChild(circle);
 
@@ -187,13 +187,17 @@ function startTimer(stop) {
 
 function stayinAlive(e){
     //when player successfully clicks circle... maybe add a life
-    console.log('stayin alive');
+    console.log(circle);
+    createLives(3);
 }
 
 function activateCircle(){
     //change color - add click event for one second
+    // red is clickable, blue is not clickable
     circle.style.backgroundColor = 'red';
     circle.addEventListener('click', stayinAlive);
+    //pause animation... maybe
+
     setTimeout(function(){
     circle.style.backgroundColor = 'blue';
     circle.removeEventListener('click', stayinAlive);
@@ -205,7 +209,7 @@ function activateCircle(){
     var rand = Math.round(Math.random() * (30000 - 500)) + 500;
     interval = setInterval(function() {
             activateCircle();
-            loop();  
+            console.log(rand);
     }, rand);
 }());
 
