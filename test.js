@@ -214,5 +214,5 @@ activateCircle();
 startTimer();
 
 // Move to the next corner on click
-container.addEventListener('click', activateCircle);
+container.addEventListener('click', loseLife);
 
