@@ -1,10 +1,13 @@
 # JavascriptDots
 Javascript mini 'games'
 ## Todo
-- Dynamic MenU
+- Reflex tester?
+
 ## In Progress
 - Click Survival
+    - test hitbox, maybe pause when clickable
 
 ## Finished
 - Random Dot Generator
+- Dynamic Menu
 
