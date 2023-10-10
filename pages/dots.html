@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Color Click Game</title>
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="/css/styles.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 
@@ -18,14 +18,9 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav" id="dynamicNav">
+      </ul>
         <ul class="navbar-nav">
-          <li class="nav-item active" style="padding-right: 10px;">
-            <button class="btn btn-danger btn-block" onclick="location.href='index.html'">Home</button>
-          </li>
-          <li class="nav-item active" style="padding-right: 10px;">
-            <button class="btn btn-danger btn-block" onclick="location.href='clickSurvival.html'">Clicks
-              Survival</button>
-          </li>
           <li>
             <span class="navbar-divider-vertical"></span>
           </li>
@@ -38,7 +33,8 @@
   </div>
   <div class="game-container">
   </div>
-  <script src="dots.js"></script>
+  <script src="/scripts/dynamicNav.js"></script>
+  <script src="/games/dots.js"></script>
 </body>
 
 </html>
