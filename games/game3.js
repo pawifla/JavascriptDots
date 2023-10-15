@@ -5,7 +5,7 @@ const numberInput = document.getElementById("numberInput");
 let collatzSequence = [];
 let sequence = [];
 let steps = [];
-const ctx = document.getElementById("collatzChart");
+const ctx = document.getElementById("collatzChart").getContext('2d');
 
 function setNumber() {
   const startNum = parseFloat(numberInput.value);
@@ -49,15 +49,16 @@ function getMinMaxValues(sequence, steps) {
   return { maxX, maxY, minX, minY };
 }
 
+const initialData = [1,2,3,4];
 const chartData = {
   labels: steps,
   datasets: [
     {
       label: "Collatz Sequence",
-      data: [1,2,3,4],
-      fill: true,
+      data: initialData,
+      fill: false,
       borderColor: "rgb(75, 192, 192)",
-      tension: 1,
+      tension: 0.1,
     },
   ],
 };
@@ -99,7 +100,7 @@ function createChart(data) {
   chartConfig.options.scales.y.max = maxY;
   chartConfig.options.scales.x.min = minX;
   chartConfig.options.scales.y.min = minY;
-  chartData.datasets[0].data = data;
+//   chartData.datasets[0].data = data;
   myLineChart.update();
   console.log(chartData.datasets[0].data);
 }
