@@ -9,7 +9,7 @@ const ctx = document.getElementById("collatzChart").getContext('2d');
 
 function setNumber() {
   const startNum = parseFloat(numberInput.value);
-  collatzSequence = collatzLoop(startNum, 0);
+  collatzSequence = collatzLoop(startNum, 1);
   createChart(collatzSequence);
 }
 
@@ -55,7 +55,7 @@ const chartData = {
   datasets: [
     {
       label: "Collatz Sequence",
-      data: initialData,
+      data: collatzSequence,
       fill: false,
       borderColor: "rgb(75, 192, 192)",
       tension: 0.1,
@@ -87,7 +87,7 @@ const chartConfig = {
   },
 };
 
-const myLineChart = new Chart(ctx, chartConfig);
+let myLineChart = new Chart(ctx, chartConfig);
 
 // Get dynamic max values for the X and Y axes
 
@@ -100,7 +100,8 @@ function createChart(data) {
   chartConfig.options.scales.y.max = maxY;
   chartConfig.options.scales.x.min = minX;
   chartConfig.options.scales.y.min = minY;
-//   chartData.datasets[0].data = data;
+  // myLineChart = new Chart (ctx, chartConfig);
+  chartData.datasets[0].data = data;
   myLineChart.update();
   console.log(chartData.datasets[0].data);
 }

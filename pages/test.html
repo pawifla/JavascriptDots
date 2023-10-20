@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Collatz Sequence Chart</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <input type="number" id="numberInput" placeholder="Enter a number">
+    <button onclick="setNumber()">Generate Collatz Sequence</button>
+    <div style="width: 80%; margin: 0 auto;">
+        <canvas id="collatzChart"></canvas>
+    </div>
+
+    <script>
+        const numberInput = document.getElementById("numberInput");
+        let collatzSequence = [];
+        let steps = [];
+        const ctx = document.getElementById("collatzChart").getContext('2d');
+        let myLineChart;
+
+        function setNumber() {
+            const startNum = parseFloat(numberInput.value);
+            collatzSequence = collatzLoop(startNum, 1);
+            createChart(collatzSequence, steps);
+        }
+
+        function collatzLoop(n, i) {
+            const sequence = [n];
+            steps = [i];
+            do {
+                if (n % 2 === 0) {
+                    n = n / 2;
+                } else {
+                    n = 3 * n + 1;
+                }
+                i++;
+                steps.push(i);
+                sequence.push(n);
+            } while (n != 1);
+            console.log(sequence);
+            console.log(steps);
+            return sequence;
+        }
+
+        function createChart(data, xAxisData) {
+            if (myLineChart) {
+                myLineChart.destroy();
+            }
+
+            myLineChart = new Chart(ctx, {
+                type: "line",
+                data: {
+                    labels: xAxisData,
+                    datasets: [
+                        {
+                            label: "Collatz Sequence",
+                            data: data,
+                            fill: false,
+                            borderColor: "rgb(75, 192, 192)",
+                            tension: 0.1,
+                        },
+                    ],
+                },
+                options: {
+                    responsive: true,
+                    title: {
+                        display: true,
+                        text: 'Collatz Sequence',
+                    },
+                    scales: {
+                        x: {
+                            type: "linear",
+                            position: "bottom",
+                        },
+                        y: {
+                            beginAtZero: true,
+                        },
+                    },
+                },
+            });
+        }
+    </script>
+</body>
+</html>
