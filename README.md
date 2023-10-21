@@ -7,7 +7,7 @@ Javascript mini 'games'
 - Click Survival
     - test hitbox, maybe pause when clickable
 - Collatz Chart
-    - Fix chart line bug
+    - add multiple data options
 
 ## Finished
 - Random Dot Generator
