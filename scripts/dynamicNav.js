@@ -3,7 +3,7 @@ const navButtons = [
   { text: 'Home', url: '../index.html', color: 'blue' },
   { text: 'Dots', url: 'dots.html',color: 'green' },
   { text: 'Clicks Survival', url: 'clickSurvival.html',color: 'gray' },
-  { text: 'Game 3', url: 'game3.html',color: 'dark' }
+  { text: 'Collatz Sequence', url: 'collatzChart.html',color: 'dark' }
 ];
 
 function createDynamicNav() {

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Collatz Sequence</title>
+    <link rel="stylesheet" href="/css/styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  </head>
+  <body>
+    <div class="fixed-top">
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">Collatz Sequence</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav" id="dynamicNav"></ul>
+        </div>
+      </nav>
+    </div>
+    <div class="container">
+      <h1>Collatz Sequence</h1>
+      <p>The Collatz sequence, also known as the 3n+1 sequence or the hailstone sequence, is a mathematical sequence defined as follows: Start with any positive integer. If it's even, divide it by 2; if it's odd, multiply it by 3 and add 1. Repeat the process with the new number. The conjecture suggests that, regardless of the starting number, the sequence will always eventually reach the number 1. While this hypothesis remains unproven, the Collatz sequence continues to be a fascinating topic in the world of mathematics, known for its deceptively simple yet mysterious nature.</p>
+      <div class="row">
+        <canvas id="collatzChart"></canvas>
+      </div>
+      <div class="row mt-5">
+        <div class="col-sm">
+        <input class="form-control" type="number" placeholder="Enter Starting Number" id="numberInput"/>
+      </div>
+      <div class="col-sm">
+        <button class="btn btn-success btn-block" onClick="setNumber()">
+          Submit
+        </button>
+      </div>
+    </div>
+    </div>
+
+    <script src="/games/collatzChart.js"></script>
+    <script src="/scripts/dynamicNav.js"></script>
+  </body>
+</html>
